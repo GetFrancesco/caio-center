@@ -1,0 +1,72 @@
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import axe from 'axe-core';
+import { JSDOM } from 'jsdom';
+import { describe, expect, it } from 'vitest';
+import { pages } from '../vite.config.js';
+
+const SITE = 'https://caio.center';
+const root = resolve(import.meta.dirname, '..');
+const sitemap = readFileSync(resolve(root, 'public/sitemap.xml'), 'utf8');
+
+const load = (file) => new JSDOM(readFileSync(resolve(root, file), 'utf8')).window.document;
+const urlOf = (file) => `${SITE}/${file.replace(/index\.html$/, '')}`;
+
+describe.each(Object.values(pages))('%s', (file) => {
+  const doc = load(file);
+  const meta = (key) =>
+    doc.querySelector(`meta[name="${key}"], meta[property="${key}"]`)?.getAttribute('content') ?? '';
+
+  it('ha lingua, title e description', () => {
+    expect(doc.documentElement.lang).toBe('it');
+    expect(doc.title.length).toBeGreaterThan(10);
+    expect(doc.title.length).toBeLessThanOrEqual(70);
+    expect(meta('description').length).toBeGreaterThan(50);
+    expect(meta('description').length).toBeLessThanOrEqual(170);
+  });
+
+  it('ha canonical e og:url coerenti con il percorso', () => {
+    const url = urlOf(file);
+    expect(doc.querySelector('link[rel="canonical"]').href).toBe(url);
+    expect(meta('og:url')).toBe(url);
+    expect(sitemap).toContain(`<loc>${url}</loc>`);
+  });
+
+  it('è condivisibile sui social', () => {
+    for (const key of ['og:type', 'og:title', 'og:description', 'og:image', 'og:image:alt', 'twitter:title']) {
+      expect(meta(key), key).not.toBe('');
+    }
+    expect(meta('og:locale')).toBe('it_IT');
+    expect(meta('og:image')).toMatch(/^https:\/\/caio\.center\/og\/.+\.png$/);
+    expect(meta('twitter:card')).toBe('summary_large_image');
+    const image = meta('og:image').replace(SITE, 'public');
+    expect(() => readFileSync(resolve(root, image))).not.toThrow();
+  });
+
+  it('ha JSON-LD valido con schema.org', () => {
+    const blocks = [...doc.querySelectorAll('script[type="application/ld+json"]')];
+    expect(blocks.length).toBeGreaterThan(0);
+    for (const block of blocks) {
+      const data = JSON.parse(block.textContent);
+      expect(data['@context']).toBe('https://schema.org');
+      expect(data['@graph'].some((node) => node.url === urlOf(file))).toBe(true);
+    }
+  });
+
+  it('ha una struttura accessibile', () => {
+    expect(doc.querySelectorAll('h1')).toHaveLength(1);
+    expect(doc.querySelectorAll('main')).toHaveLength(1);
+    expect(doc.querySelector('header')).not.toBeNull();
+    expect(doc.querySelector('footer')).not.toBeNull();
+    for (const img of doc.querySelectorAll('img')) expect(img.hasAttribute('alt')).toBe(true);
+  });
+
+  it('non ha violazioni axe', async () => {
+    const { window } = new JSDOM(readFileSync(resolve(root, file), 'utf8'), { runScripts: 'outside-only' });
+    window.eval(axe.source);
+    // jsdom non calcola il layout: il contrasto va verificato nel browser.
+    const result = await window.axe.run(window.document, { rules: { 'color-contrast': { enabled: false } } });
+    const violations = result.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target).join(', ')}`);
+    expect(violations).toEqual([]);
+  });
+});

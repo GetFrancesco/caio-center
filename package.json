@@ -1,0 +1,29 @@
+{
+  "name": "caio-center",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "og": "node scripts/og-images.js"
+  },
+  "dependencies": {
+    "@fontsource/inter": "5.3.0",
+    "@fontsource/poppins": "5.3.0",
+    "motion": "14.14.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.9",
+    "axe-core": "4.14.1",
+    "jsdom": "31.0.1",
+    "vite": "8.3.8",
+    "vitest": "5.1.1"
+  }
+}

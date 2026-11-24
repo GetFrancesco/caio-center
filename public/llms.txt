@@ -1,0 +1,15 @@
+# caio.center
+
+> caio.center affianca alle piccole e medie imprese un Chief AI Officer (CAIO): un dirigente che decide con la direzione dove usare l'intelligenza artificiale, con quali regole e con quali risultati, qualche giorno al mese e senza assumere un dirigente in più. Attivo in Europa e in Svizzera. È un servizio di Indoostry Group SA, Lugano.
+
+Il servizio parte da un test gratuito (15 domande su cinque aree: uso, dati, regole, persone, risultati) e segue quattro passi: diagnosi, piano in 30 giorni, inserimento del CAIO con un accompagnamento di almeno sei mesi, misura dei risultati ogni 90 giorni. Il lavoro segue il Metodo Statera in cinque fasi (fotografia, mappa, regole, piano, guida) su cicli di 90 giorni. L'accompagnamento ha tre livelli: presidio, direzione, trasformazione.
+
+Ogni CAIO della rete supera la qualifica caio.center: esperienza di direzione verificata, esame sulle norme (AI Act, legge italiana, quadro svizzero, ISO/IEC 42001), prova pratica sul Metodo Statera e primo incarico affiancato. La certificazione professionale esterna di riferimento è la UNI 11621-8.
+
+I contenuti del sito sono informazione generale e non consulenza legale.
+
+## Pagine
+
+- [Per le aziende](https://caio.center/): cos'è il Chief AI Officer, cosa fa, come funziona il servizio e il Metodo Statera.
+- [Diventa CAIO](https://caio.center/diventa-caio/): requisiti, percorso, certificazione UNI 11621-8 e qualifica per entrare nella rete.
+- [Per i selezionatori](https://caio.center/selezione/): valutazione dei candidati CAIO per società di selezione e direzioni del personale, con un rapporto su competenza tecnica, norme e processi aziendali.
