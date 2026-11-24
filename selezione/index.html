@@ -59,27 +59,18 @@
 <script type="module" src="../src/main.js"></script>
 </head>
 <body>
-<div style="font-family: Inter, 'Segoe UI', system-ui, sans-serif; color: #111827; background: #FFFFFF; font-size: 16px; line-height: 1.6">
 
-<header style="background: #111827; color: #FFFFFF">
-<div style="max-width: 1160px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px">
-<a href="../" aria-label="caio.center, pagina per le aziende" style="font-family: Poppins, sans-serif; font-weight: 700; font-size: 36px; color: #FFFFFF; text-decoration: none; letter-spacing: -0.01em">caio<span class="brand-dot">.</span>center</a>
-<nav aria-label="Menu principale" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; font-size: 16px">
-<a class="nav-link" href="../" style="color: #FFFFFF; text-decoration: none; padding: 12px 0">Per le aziende</a>
-<a class="nav-link" href="../diventa-caio/" style="color: #FFFFFF; text-decoration: none; padding: 12px 0">Diventa CAIO</a>
-<a class="nav-link" href="../selezione/" aria-current="page" style="color: #FFFFFF; text-decoration: underline; text-decoration-color: #FF6A3D; text-decoration-thickness: 2px; text-underline-offset: 0.35em; padding: 12px 0">Per i selezionatori</a>
-<a class="btn btn-accent" href="#contatti" style="background: #FF6A3D; color: #111827; text-decoration: none; font-family: Poppins, sans-serif; font-weight: 600; padding: 12px 20px; border-radius: 8px">Contatti</a>
-</nav>
-</div>
+<header class="on-dark">
+<!-- partial:header -->
 
-<div id="top" style="max-width: 1160px; margin: 0 auto; padding: 72px 24px 96px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
-<div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
-<p style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 16px; color: #FF6A3D">Selezione e HR</p>
-<h1 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: clamp(40px, 6vw, 68px); line-height: 1.05; letter-spacing: -0.02em">Per le società di selezione e le direzioni del personale<span style="color: #FF6A3D">.</span></h1>
-<p style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.3; color: #FFFFFF; max-width: 760px">Siete alla ricerca di un CAIO e volete assistenza nella valutazione dei candidati<span style="color: #FF6A3D">?</span></p>
-<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center">
-<a class="btn btn-accent" href="#contatti" style="background: #FF6A3D; color: #111827; text-decoration: none; font-family: Poppins, sans-serif; font-weight: 600; font-size: 18px; padding: 16px 28px; border-radius: 8px">Richiedi una valutazione</a>
-<a class="text-link" href="#cosa-ricevete" style="color: #FFFFFF; font-family: Poppins, sans-serif; font-weight: 500; font-size: 16px; padding: 16px 4px">Cosa ricevete</a>
+<div class="container hero" id="top">
+<div class="col grow basis-520 stack gap-24">
+<p class="kicker">Selezione e HR</p>
+<h1 class="title-hero">Per le società di selezione e le direzioni del personale<span class="c-accent">.</span></h1>
+<p class="lead-display mw-760">Siete alla ricerca di un CAIO e volete assistenza nella valutazione dei candidati<span class="c-accent">?</span></p>
+<div class="row gap-16 items-center">
+<a class="btn btn-accent btn-lg" href="#contatti">Richiedi una valutazione</a>
+<a class="text-link link-light" href="#cosa-ricevete">Cosa ricevete</a>
 </div>
 </div>
 </div>
@@ -87,84 +78,84 @@
 
 <main>
 
-<section id="selezione" style="position: relative; background: #111827; color: #FFFFFF; overflow: hidden">
-<div data-sel-line aria-hidden="true" style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: #FF6A3D; transform-origin: 0 50%"></div>
-<div style="max-width: 1160px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 40px 64px; align-items: center; justify-content: space-between">
-<div data-sel-copy style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
-<p style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 16px; color: #FF6A3D">Come lavoriamo</p>
-<h2 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.1; letter-spacing: -0.01em; color: #FFFFFF">Valutiamo i candidati con voi<span style="color: #FF6A3D">.</span></h2>
-<p style="margin: 0; font-size: 20px; line-height: 1.55; color: #D5DAE3; max-width: 640px">Valutiamo i candidati con voi e vi consegniamo un rapporto dettagliato su competenza tecnica, conoscenza delle norme e capacità di leggere i processi aziendali. Voi scegliete su basi solide.</p>
+<section class="on-dark selection-band" id="selezione">
+<div class="selection-line" data-sel-line aria-hidden="true"></div>
+<div class="container section row gap-40 gap-x-64 items-center justify-between">
+<div class="col grow basis-560 stack gap-20" data-sel-copy>
+<p class="kicker">Come lavoriamo</p>
+<h2 class="title-cta">Valutiamo i candidati con voi<span class="c-accent">.</span></h2>
+<p class="lead mw-640">Valutiamo i candidati con voi e vi consegniamo un rapporto dettagliato su competenza tecnica, conoscenza delle norme e capacità di leggere i processi aziendali. Voi scegliete su basi solide.</p>
 </div>
-<a data-sel-cta class="btn btn-accent" href="#contatti" style="background: #FF6A3D; color: #111827; text-decoration: none; font-family: Poppins, sans-serif; font-weight: 600; font-size: 18px; padding: 20px 36px; border-radius: 8px">Richiedi una valutazione</a>
-</div>
-</section>
-
-<section id="cosa-ricevete" style="max-width: 1160px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px">
-<div style="display: flex; flex-direction: column; gap: 12px; max-width: 760px">
-<p style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 14px; color: #5B6474">Cosa ricevete</p>
-<h2 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: clamp(30px, 4vw, 44px); line-height: 1.15; letter-spacing: -0.01em">Un rapporto dettagliato su tre aree.</h2>
-<p style="margin: 0; color: #5B6474">Per ogni candidato, un giudizio che potete mettere a confronto con gli altri e condividere con il cliente.</p>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
-<div class="card" style="flex: 1 1 240px; min-width: 0; background: #F4F5F7; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
-<p style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; color: #8A93A3">1</p>
-<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 24px; line-height: 1.25">Competenza tecnica</h3>
-<p style="margin: 0; color: #5B6474; font-size: 16px; flex-grow: 1">Quanto conosce l'intelligenza artificiale, i suoi strumenti e i suoi limiti, e come la porta in un'impresa.</p>
-</div>
-<div class="card" style="flex: 1 1 240px; min-width: 0; background: #F4F5F7; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
-<p style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; color: #8A93A3">2</p>
-<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 24px; line-height: 1.25">Conoscenza delle norme</h3>
-<p style="margin: 0; color: #5B6474; font-size: 16px; flex-grow: 1">AI Act, leggi nazionali, protezione dei dati e ISO/IEC 42001.</p>
-</div>
-<div class="card" style="flex: 1 1 240px; min-width: 0; background: #F4F5F7; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
-<p style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; color: #8A93A3">3</p>
-<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 24px; line-height: 1.25">Lettura dei processi aziendali</h3>
-<p style="margin: 0; color: #5B6474; font-size: 16px; flex-grow: 1">Se sa leggere conti, processi e organizzazione e tradurli in scelte pratiche sull'AI.</p>
-</div>
+<a data-sel-cta class="btn btn-accent btn-xl" href="#contatti">Richiedi una valutazione</a>
 </div>
 </section>
 
-<section id="metro" style="background: #F4F5F7">
-<div style="max-width: 1160px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px">
-<div style="display: flex; flex-direction: column; gap: 12px; max-width: 760px">
-<p style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 14px; color: #5B6474">Il nostro metro</p>
-<h2 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: clamp(30px, 4vw, 44px); line-height: 1.15; letter-spacing: -0.01em">Lo stesso metro con cui qualifichiamo i nostri CAIO.</h2>
-<p style="margin: 0; color: #3D4553">Il titolo di Chief AI Officer oggi lo può usare chiunque. Per i nostri CAIO abbiamo fissato l'asticella con prove uguali per tutti: usiamo gli stessi criteri per valutare i vostri candidati.</p>
+<section class="container section" id="cosa-ricevete">
+<div class="stack gap-12 mw-760">
+<p class="eyebrow">Cosa ricevete</p>
+<h2 class="title-section">Un rapporto dettagliato su tre aree.</h2>
+<p class="c-muted">Per ogni candidato, un giudizio che potete mettere a confronto con gli altri e condividere con il cliente.</p>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
-<div class="card" style="flex: 1 1 240px; min-width: 0; background: #FFFFFF; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<p style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; color: #8A93A3">1</p>
-<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 20px; line-height: 1.25">Esperienza di direzione verificata</h3>
-<p style="margin: 0; color: #3D4553; font-size: 16px">Ha guidato un'impresa, una funzione o progetti complessi. Controlliamo percorso e referenze, una per una.</p>
+<div class="row gap-20">
+<div class="card col basis-240 card bg-surface gap-16">
+<p class="step-num">1</p>
+<h3 class="fs-24 lh-125">Competenza tecnica</h3>
+<p class="c-muted fill">Quanto conosce l'intelligenza artificiale, i suoi strumenti e i suoi limiti, e come la porta in un'impresa.</p>
 </div>
-<div class="card" style="flex: 1 1 240px; min-width: 0; background: #FFFFFF; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<p style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; color: #8A93A3">2</p>
-<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 20px; line-height: 1.25">Esame sulle norme</h3>
-<p style="margin: 0; color: #3D4553; font-size: 16px">AI Act, leggi nazionali, protezione dei dati e ISO/IEC 42001, più una certificazione professionale rilasciata da un organismo accreditato.</p>
+<div class="card col basis-240 card bg-surface gap-16">
+<p class="step-num">2</p>
+<h3 class="fs-24 lh-125">Conoscenza delle norme</h3>
+<p class="c-muted fill">AI Act, leggi nazionali, protezione dei dati e ISO/IEC 42001.</p>
 </div>
-<div class="card" style="flex: 1 1 240px; min-width: 0; background: #FFFFFF; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<p style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; color: #8A93A3">3</p>
-<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 20px; line-height: 1.25">Prova pratica sul Metodo Statera</h3>
-<p style="margin: 0; color: #3D4553; font-size: 16px">Un caso d'impresa da risolvere con le cinque fasi e i modelli di lavoro.</p>
-</div>
-<div class="card" style="flex: 1 1 240px; min-width: 0; background: #FFFFFF; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<p style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; color: #8A93A3">4</p>
-<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 20px; line-height: 1.25">Indipendenza</h3>
-<p style="margin: 0; color: #3D4553; font-size: 16px">Nessun compenso dai fornitori di software: verifichiamo che il candidato possa consigliare senza conflitti di interesse.</p>
-</div>
+<div class="card col basis-240 card bg-surface gap-16">
+<p class="step-num">3</p>
+<h3 class="fs-24 lh-125">Lettura dei processi aziendali</h3>
+<p class="c-muted fill">Se sa leggere conti, processi e organizzazione e tradurli in scelte pratiche sull'AI.</p>
 </div>
 </div>
 </section>
 
-<section id="profilo" style="max-width: 1160px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px">
-<div style="display: flex; flex-direction: column; gap: 16px; max-width: 820px">
-<h2 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: clamp(30px, 4vw, 44px); line-height: 1.15; letter-spacing: -0.01em">Chi non è il Chief AI Officer, e chi è.</h2>
-<p style="margin: 0; color: #5B6474">È il dirigente che risponde al titolare di tutto ciò che riguarda l'AI in azienda: scelte, regole, persone e risultati.</p>
+<section class="bg-surface" id="metro">
+<div class="container section">
+<div class="stack gap-12 mw-760">
+<p class="eyebrow">Il nostro metro</p>
+<h2 class="title-section">Lo stesso metro con cui qualifichiamo i nostri CAIO.</h2>
+<p class="c-body">Il titolo di Chief AI Officer oggi lo può usare chiunque. Per i nostri CAIO abbiamo fissato l'asticella con prove uguali per tutti: usiamo gli stessi criteri per valutare i vostri candidati.</p>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 40px 64px">
-<div style="flex: 1 1 380px; min-width: 0; border-top: 2px solid #111827; padding-top: 24px; display: flex; flex-direction: column; gap: 16px">
-<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 24px">Il CAIO non è</h3>
-<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 12px; color: #3D4553">
+<div class="row gap-20">
+<div class="card col basis-240 card bg-white">
+<p class="step-num">1</p>
+<h3 class="fs-20 lh-125">Esperienza di direzione verificata</h3>
+<p class="c-body">Ha guidato un'impresa, una funzione o progetti complessi. Controlliamo percorso e referenze, una per una.</p>
+</div>
+<div class="card col basis-240 card bg-white">
+<p class="step-num">2</p>
+<h3 class="fs-20 lh-125">Esame sulle norme</h3>
+<p class="c-body">AI Act, leggi nazionali, protezione dei dati e ISO/IEC 42001, più una certificazione professionale rilasciata da un organismo accreditato.</p>
+</div>
+<div class="card col basis-240 card bg-white">
+<p class="step-num">3</p>
+<h3 class="fs-20 lh-125">Prova pratica sul Metodo Statera</h3>
+<p class="c-body">Un caso d'impresa da risolvere con le cinque fasi e i modelli di lavoro.</p>
+</div>
+<div class="card col basis-240 card bg-white">
+<p class="step-num">4</p>
+<h3 class="fs-20 lh-125">Indipendenza</h3>
+<p class="c-body">Nessun compenso dai fornitori di software: verifichiamo che il candidato possa consigliare senza conflitti di interesse.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="container section" id="profilo">
+<div class="stack gap-16 mw-820">
+<h2 class="title-section">Chi non è il Chief AI Officer, e chi è.</h2>
+<p class="c-muted">È il dirigente che risponde al titolare di tutto ciò che riguarda l'AI in azienda: scelte, regole, persone e risultati.</p>
+</div>
+<div class="row gap-40 gap-x-64">
+<div class="col basis-380 rule-top pt-24 stack gap-16">
+<h3 class="fs-24">Il CAIO non è</h3>
+<ul class="bullet-list">
 <li>Un programmatore o un esperto di modelli che lavora da solo.</li>
 <li>Il responsabile informatico con un titolo nuovo.</li>
 <li>Un rivenditore di piattaforme o di licenze.</li>
@@ -172,9 +163,9 @@
 <li>Un legale: lavora con il tuo, non lo sostituisce.</li>
 </ul>
 </div>
-<div style="flex: 1 1 380px; min-width: 0; border-top: 2px solid #F2552C; padding-top: 24px; display: flex; flex-direction: column; gap: 16px">
-<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: 24px">Il CAIO è</h3>
-<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 12px; color: #3D4553">
+<div class="col basis-380 rule-top rule-accent pt-24 stack gap-16">
+<h3 class="fs-24">Il CAIO è</h3>
+<ul class="bullet-list">
 <li>Un dirigente che siede con la direzione e parla la lingua dei conti.</li>
 <li>Chi decide con te priorità, investimenti e regole sull'AI.</li>
 <li>Chi traduce norme come l'AI Act in scelte pratiche.</li>
@@ -185,14 +176,14 @@
 </div>
 </section>
 
-<section id="contatti" style="background: #F2552C; color: #111827">
-<div style="max-width: 1160px; margin: 0 auto; padding: clamp(64px, 8vw, 104px) 24px; box-sizing: border-box">
-<div data-contatti-block style="display: flex; flex-wrap: wrap; gap: 40px 64px; align-items: center; justify-content: space-between">
-<div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column">
-<h2 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 600; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.1; letter-spacing: -0.01em">Richiedi una valutazione.</h2>
-<p style="margin: 20px 0 0; font-size: clamp(18px, 1.6vw, 20px); line-height: 1.55; max-width: 620px">Diteci quanti candidati dovete valutare e per quale ruolo: vi proponiamo come procedere.</p>
+<section class="on-accent" id="contatti">
+<div class="container cta-inner">
+<div class="row gap-40 gap-x-64 items-center justify-between" data-contatti-block>
+<div class="col grow basis-520 stack">
+<h2 class="title-cta">Richiedi una valutazione.</h2>
+<p class="cta-text">Diteci quanti candidati dovete valutare e per quale ruolo: vi proponiamo come procedere.</p>
 <!-- DA COMPLETARE: inserire qui l'indirizzo e-mail o il modulo di contatto (non presente nel sito originale) -->
-<p style="margin: 32px 0 0; padding-top: 20px; border-top: 1px solid rgba(17, 24, 39, 0.28); font-size: 15px; line-height: 1.5; font-weight: 500; max-width: 620px">caio<span class="brand-dot">.</span>center è un servizio di Indoostry Group SA, Lugano.</p>
+<p class="cta-note">caio<span class="brand-dot">.</span>center è un servizio di Indoostry Group SA, Lugano.</p>
 </div>
 
 </div>
@@ -201,28 +192,7 @@
 
 </main>
 
-<footer style="background: #111827; color: #D5DAE3">
-<div style="max-width: 1160px; margin: 0 auto; padding: 56px 24px; display: flex; flex-wrap: wrap; gap: 32px 64px; justify-content: space-between; font-size: 16px">
-<div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
-<p style="margin: 0; font-family: Poppins, sans-serif; font-weight: 700; font-size: 24px; color: #FFFFFF">caio<span class="brand-dot">.</span>center</p>
-<p style="margin: 0">Chief AI Officer per la tua impresa</p>
-<p style="margin: 0">Un servizio di Indoostry Group SA, Lugano</p>
-</div>
-<div style="display: flex; flex-direction: column; gap: 4px">
-<a class="nav-link" href="../" style="color: #FFFFFF; padding: 8px 0">Per le aziende</a>
-<a class="nav-link" href="../diventa-caio/" style="color: #FFFFFF; padding: 8px 0">Diventa CAIO</a>
-<a class="nav-link" href="../selezione/" style="color: #FFFFFF; padding: 8px 0">Per i selezionatori</a>
-<a class="nav-link" href="#contatti" style="color: #FFFFFF; padding: 8px 0">Contatti</a>
-</div>
-<div style="display: flex; flex-direction: column; gap: 4px">
-<a class="nav-link" href="#top" style="color: #FFFFFF; padding: 8px 0">LinkedIn</a>
-<a class="nav-link" href="#top" style="color: #FFFFFF; padding: 8px 0">YouTube</a>
-<a class="nav-link" href="#top" style="color: #FFFFFF; padding: 8px 0">Protezione dei dati</a>
-</div>
-<p style="flex: 1 1 100%; margin: 0; color: #AEB6C4; font-size: 14px">I contenuti di questo sito sono informazione generale e non consulenza legale.</p>
-</div>
-</footer>
+<!-- partial:footer -->
 
-</div>
 </body>
 </html>

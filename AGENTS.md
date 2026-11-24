@@ -12,7 +12,8 @@ Sito marketing di caio.center, in italiano, pubblicato su Netlify. Tre pagine:
 - Netlify esegue `npm run build` e pubblica `dist/`.
 - `src/main.js` carica il CSS condiviso, i font (Fontsource) e le animazioni (`src/motion.js`).
 - Meta, Open Graph, Twitter Card e JSON-LD sono scritti a mano nell'head di ogni pagina; `tests/pages.test.js` li verifica.
-- Gli stili sono ancora inline nel markup e header e footer sono duplicati tra le pagine: spostarli in CSS e partial quando si tocca quella parte.
+- Header (barra con logo e menu) e footer sono partial in `src/partials/site.js`: le pagine li richiamano con `<!-- partial:header -->` e `<!-- partial:footer -->` e il plugin in `vite.config.js` li inserisce in dev e in build.
+- Tutti gli stili stanno in `src/styles.css`: token in `:root`, poi base, layout, componenti e in fondo poche utility (`row`, `stack`, `col basis-*`, `gap-*`, `fs-*`, `c-*`). Le pagine non usano `style` inline (lo verifica un test).
 - Nel blocco contatti della home manca ancora l'indirizzo e-mail o il modulo (vedi il commento `DA COMPLETARE`); i link a LinkedIn, YouTube e protezione dei dati nel footer puntano a `#top`.
 
 Ogni modifica deve avvicinare il sito alle regole qui sotto, senza riscritture non richieste.
@@ -23,7 +24,7 @@ Ogni modifica deve avvicinare il sito alle regole qui sotto, senza riscritture n
 
 - La soluzione più semplice che funziona. Niente dipendenze, astrazioni o configurazioni senza un bisogno concreto.
 - HTML semantico prima di JavaScript. Una pagina di contenuto deve leggersi anche con JS disattivato.
-- Stili in CSS con custom properties (colori, spaziature, font) invece di valori ripetuti inline.
+- Niente `style` inline. Colori e font solo tramite i token di `src/styles.css`; prima un componente esistente, poi le utility, e solo dopo una classe nuova.
 
 ### Mobile first
 

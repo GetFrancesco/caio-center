@@ -3,13 +3,16 @@ import { resolve } from 'node:path';
 import axe from 'axe-core';
 import { JSDOM } from 'jsdom';
 import { describe, expect, it } from 'vitest';
+import { pagePath, renderPartials } from '../src/partials/site.js';
 import { pages } from '../vite.config.js';
 
 const SITE = 'https://caio.center';
 const root = resolve(import.meta.dirname, '..');
 const sitemap = readFileSync(resolve(root, 'public/sitemap.xml'), 'utf8');
 
-const load = (file) => new JSDOM(readFileSync(resolve(root, file), 'utf8')).window.document;
+// Le pagine come le serve Vite: sorgente + partial.
+const render = (file) => renderPartials(readFileSync(resolve(root, file), 'utf8'), pagePath(file));
+const load = (file) => new JSDOM(render(file)).window.document;
 const urlOf = (file) => `${SITE}/${file.replace(/index\.html$/, '')}`;
 
 describe.each(Object.values(pages))('%s', (file) => {
@@ -61,8 +64,17 @@ describe.each(Object.values(pages))('%s', (file) => {
     for (const img of doc.querySelectorAll('img')) expect(img.hasAttribute('alt')).toBe(true);
   });
 
+  it('non usa stili inline e include header e footer', () => {
+    const source = readFileSync(resolve(root, file), 'utf8');
+    expect(source).not.toMatch(/\sstyle="/);
+    expect(doc.querySelectorAll('.topbar')).toHaveLength(1);
+    expect(doc.querySelectorAll('footer')).toHaveLength(1);
+    const current = [...doc.querySelectorAll('[aria-current="page"]')].map((a) => a.getAttribute('href'));
+    expect(current).toEqual([pagePath(file)]);
+  });
+
   it('non ha violazioni axe', async () => {
-    const { window } = new JSDOM(readFileSync(resolve(root, file), 'utf8'), { runScripts: 'outside-only' });
+    const { window } = new JSDOM(render(file), { runScripts: 'outside-only' });
     window.eval(axe.source);
     // jsdom non calcola il layout: il contrasto va verificato nel browser.
     const result = await window.axe.run(window.document, { rules: { 'color-contrast': { enabled: false } } });
