@@ -27,7 +27,9 @@ npm run dev
 ## Struttura
 
 - `index.html`, `diventa-caio/index.html`, `selezione/index.html`: le pagine, registrate in `vite.config.js`.
-- `src/`: CSS condiviso, font e animazioni (Motion).
+- `src/styles.css`: tutti gli stili (token, componenti, utility).
+- `src/partials/site.js`: header e footer condivisi, inseriti da `<!-- partial:nome -->`.
+- `src/motion.js`: animazioni (Motion).
 - `public/`: file copiati così come sono (`robots.txt`, `sitemap.xml`, `llms.txt`, immagini OG, favicon).
 - `tests/`: test Vitest.
 
