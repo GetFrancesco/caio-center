@@ -4,183 +4,61 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Valutazione dei candidati CAIO per società di selezione – caio.center</title>
-<meta name="description" content="Per società di selezione e direzioni del personale: valutiamo con voi i candidati Chief AI Officer e vi consegniamo un rapporto su competenza tecnica, norme e processi aziendali.">
+<meta name="description" content="Per società di selezione e direzioni del personale: valutiamo con voi i candidati Chief AI Officer, con un rapporto su competenza tecnica, norme e processi aziendali.">
 <link rel="canonical" href="https://caio.center/selezione/">
-<script src="../vendor/react.js"></script>
-<script src="../vendor/react-dom.js"></script>
-<script src="../support.js"></script>
-<script type="module">
-/* Motion v14.14.0 (vanilla). Niente animazioni con prefers-reduced-motion; il contenuto si nasconde solo dopo l'import riuscito. */
-(function () {
-  if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+<meta name="theme-color" content="#111827">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
-  var SPRING = { type: 'spring', visualDuration: 0.7, bounce: 0.1 };
-  var GESTURE = { type: 'spring', stiffness: 500, damping: 30 };
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="caio.center">
+<meta property="og:url" content="https://caio.center/selezione/">
+<meta property="og:title" content="Valutiamo i candidati Chief AI Officer con voi">
+<meta property="og:description" content="Per società di selezione e direzioni del personale: valutiamo con voi i candidati Chief AI Officer, con un rapporto su competenza tecnica, norme e processi aziendali.">
+<meta property="og:image" content="https://caio.center/og/selezione.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="caio.center: valutazione dei candidati CAIO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Valutiamo i candidati Chief AI Officer con voi">
+<meta name="twitter:description" content="Per società di selezione e direzioni del personale: valutiamo con voi i candidati Chief AI Officer, con un rapporto su competenza tecnica, norme e processi aziendali.">
+<meta name="twitter:image" content="https://caio.center/og/selezione.png">
 
-  function whenReady(cb) {
-    var sel = 'header #top';
-    if (document.querySelector(sel)) return cb();
-    var t;
-    var mo = new MutationObserver(function () {
-      if (document.querySelector(sel)) { mo.disconnect(); clearTimeout(t); requestAnimationFrame(cb); }
-    });
-    t = setTimeout(function () { mo.disconnect(); }, 10000);
-    mo.observe(document.documentElement, { childList: true, subtree: true });
-  }
-
-  function isCard(el) {
-    var cs = getComputedStyle(el);
-    return parseFloat(cs.borderTopLeftRadius) > 0 || cs.backgroundColor !== 'rgba(0, 0, 0, 0)' || el.classList.contains('card');
-  }
-  function collect(el, depth, out) {
-    Array.prototype.forEach.call(el.children, function (c) {
-      var cs = getComputedStyle(c), n = c.children.length;
-      if (c.tagName === 'STYLE' || c.tagName === 'SCRIPT' || c.tagName === 'SC-HELMET') return;
-      var flex = cs.display === 'flex';
-      if (flex && cs.flexDirection === 'row' && n >= 2 && !isCard(c) && c.tagName !== 'NAV') {
-        out.push(Array.prototype.slice.call(c.children));
-      } else if (flex && cs.flexDirection === 'column' && n >= 3 && depth < 2 && !isCard(c) && c.tagName !== 'UL' && c.tagName !== 'FORM') {
-        collect(c, depth + 1, out);
-      } else { out.push([c]); }
-    });
-  }
-
-  import('https://cdn.jsdelivr.net/npm/motion@14.14.0/+esm').then(function (M) {
-    var animate = M.animate, inView = M.inView, scroll = M.scroll, stagger = M.stagger, hover = M.hover, press = M.press;
-    var hidden = [];
-
-    function show(els) {
-      [].concat(els).forEach(function (el) { el.style.opacity = ''; el.style.transform = ''; });
-    }
-    function hide(els, y) {
-      els.forEach(function (el) { animate(el, { opacity: 0, y: y }, { duration: 0 }); hidden.push(el); });
-    }
-    function reveal(els, delay) {
-      try {
-        animate(els, { opacity: 1, y: 0 }, Object.assign({ delay: delay }, SPRING));
-      } catch (e) { show(els); }
-    }
-
-    function setup() {
-      var hero = document.getElementById('top');
-
-      // Barra di progresso di lettura (scaleX)
-      var bar = document.createElement('div');
-      bar.setAttribute('aria-hidden', 'true');
-      bar.style.cssText = 'position:fixed;top:0;left:0;right:0;height:3px;background:#FF6A3D;transform-origin:0 50%;transform:scaleX(0);z-index:1000;pointer-events:none';
-      document.documentElement.appendChild(bar);
-      scroll(animate(bar, { scaleX: [0, 1] }, { ease: 'linear' }));
-
-      // Ingresso hero: spring + stagger
-      var heroItems = [];
-      if (hero.firstElementChild) heroItems = Array.prototype.slice.call(hero.firstElementChild.children);
-      if (hero.children[1]) heroItems.push(hero.children[1]);
-      hide(heroItems, 20);
-      reveal(heroItems, stagger(0.09, { startDelay: 0.1 }));
-
-      // Reveal allo scroll per sezione: il primo gruppo (titolo) scivola un po' di più
-      document.querySelectorAll('section').forEach(function (sec) {
-        if (sec.id === 'selezione') return;
-        if (sec.id === 'contatti') { var cb = sec.querySelector('[data-contatti-block]'); if (cb) { hide([cb], 16); inView(cb, function () { reveal([cb], 0); }, { amount: 0.05 }); } return; }
-        var container = (sec.children.length === 1 && sec.firstElementChild.tagName === 'DIV' && getComputedStyle(sec.firstElementChild).maxWidth !== 'none') ? sec.firstElementChild : sec;
-        var groups = [];
-        collect(container, 0, groups);
-        groups.forEach(function (grp, gi) {
-          hide(grp, gi === 0 ? 28 : 16);
-          inView(grp[0], function () {
-            reveal(grp, stagger(gi === 0 ? 0.05 : 0.07));
-          }, { amount: 0.1, margin: '0px 0px -8% 0px' });
-        });
-      });
-
-
-      // Sezione "società di selezione": ingresso dedicato (linea arancio che si apre, testo da sinistra, CTA a molla)
-      var sel = document.getElementById('selezione');
-      if (sel) {
-        var line = sel.querySelector('[data-sel-line]');
-        var copy = Array.prototype.slice.call(sel.querySelectorAll('[data-sel-copy] > *'));
-        var cta = sel.querySelector('[data-sel-cta]');
-        if (line) animate(line, { scaleX: 0 }, { duration: 0 });
-        copy.forEach(function (el) { animate(el, { opacity: 0, x: -40 }, { duration: 0 }); hidden.push(el); });
-        if (cta) { animate(cta, { opacity: 0, scale: 0.85 }, { duration: 0 }); hidden.push(cta); }
-        inView(sel, function () {
-          try {
-            if (line) animate(line, { scaleX: 1 }, { duration: 0.9, ease: [0.22, 1, 0.36, 1] });
-            animate(copy, { opacity: 1, x: 0 }, { type: 'spring', visualDuration: 0.8, bounce: 0.15, delay: stagger(0.1, { startDelay: 0.15 }) });
-            if (cta) animate(cta, { opacity: 1, scale: 1 }, { type: 'spring', visualDuration: 0.6, bounce: 0.35, delay: 0.5 });
-          } catch (e) { show(copy); if (cta) show(cta); if (line) line.style.transform = ''; }
-        }, { amount: 0.3 });
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://caio.center/selezione/#webpage",
+      "url": "https://caio.center/selezione/",
+      "isPartOf": {
+        "@id": "https://caio.center/#website"
+      },
+      "about": {
+        "@id": "https://caio.center/selezione/#service"
+      },
+      "inLanguage": "it-IT"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://caio.center/selezione/#service",
+      "name": "Valutazione dei candidati Chief AI Officer",
+      "description": "Per società di selezione e direzioni del personale: un rapporto sul candidato CAIO su competenza tecnica, conoscenza delle norme e lettura dei processi aziendali.",
+      "provider": {
+        "@id": "https://caio.center/#organization"
+      },
+      "audience": {
+        "@type": "BusinessAudience",
+        "name": "Società di selezione e direzioni del personale"
       }
-
-      // Contatori (formato italiano) + parallax leggero sui numeri
-      document.querySelectorAll('.stat-num').forEach(function (el) {
-        var txt = el.textContent.trim(), m = txt.match(/^(\d+)(?:,(\d+))?(.*)$/);
-        if (!m) return;
-        var dec = m[2] ? m[2].length : 0, target = parseFloat(m[1] + (m[2] ? '.' + m[2] : '')), suffix = m[3];
-        el.setAttribute('aria-label', txt);
-        function fmt(v) { return v.toFixed(dec).replace('.', ',') + suffix; }
-        el.textContent = fmt(0);
-        inView(el, function () {
-          animate(0, target, {
-            duration: 1.4, ease: 'easeOut',
-            onUpdate: function (v) { el.textContent = fmt(v); },
-            onComplete: function () { el.textContent = txt; }
-          });
-        }, { amount: 0.6 });
-        scroll(animate(el, { y: [10, -10] }, { ease: 'linear' }), { target: el, offset: ['start end', 'end start'] });
-      });
-
-      // Hover / press con spring (solo transform)
-      hover('.btn', function (el) {
-        animate(el, { y: -2 }, GESTURE);
-        return function () { animate(el, { y: 0 }, GESTURE); };
-      });
-      press('.btn', function (el) {
-        animate(el, { scale: 0.97 }, GESTURE);
-        return function () { animate(el, { scale: 1 }, GESTURE); };
-      });
-      hover('.card', function (el) {
-        animate(el, { y: -3, scale: 1.01 }, GESTURE);
-        return function () { animate(el, { y: 0, scale: 1 }, GESTURE); };
-      });
-      hover('.text-link', function (el) {
-        animate(el, { x: 3 }, GESTURE);
-        return function () { animate(el, { x: 0 }, GESTURE); };
-      });
     }
-
-    whenReady(function () {
-      try { setup(); } catch (e) { show(hidden); }
-    });
-  }).catch(function () { /* CDN non raggiungibile: la pagina resta com'è, visibile */ });
-})();
+  ]
+}
 </script>
+<script type="module" src="../src/main.js"></script>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap">
-<style>
-body{margin:0}
-a{color:#111827;text-underline-offset:.2em}
-a:hover{color:#B93A16}
-:focus-visible{outline:2px solid #B93A16;outline-offset:3px;border-radius:4px}
-header :focus-visible,footer :focus-visible,#strategia :focus-visible,#selezione :focus-visible{outline-color:#FF6A3D}
-#contatto :focus-visible{outline-color:#111827}
-.btn-accent:hover{background:#FF7F57!important;color:#111827!important}
-.btn-navy:hover{background:#263042!important;color:#FFFFFF!important}
-.btn-outline:hover{background:#111827!important;color:#FFFFFF!important}
-.nav-link:hover{opacity:.72}
-.text-link{display:inline-block}
-input:focus-visible{outline-color:#111827}
-@media (prefers-reduced-motion:no-preference){
-.nav-link{transition:opacity .2s cubic-bezier(.22,1,.36,1)}
-}
-
-.brand-dot{color:#FF6A3D}
-#contatti .brand-dot{color:#FFFFFF}
-</style>
-</helmet>
 <div style="font-family: Inter, 'Segoe UI', system-ui, sans-serif; color: #111827; background: #FFFFFF; font-size: 16px; line-height: 1.6">
 
 <header style="background: #111827; color: #FFFFFF">
@@ -206,6 +84,8 @@ input:focus-visible{outline-color:#111827}
 </div>
 </div>
 </header>
+
+<main>
 
 <section id="selezione" style="position: relative; background: #111827; color: #FFFFFF; overflow: hidden">
 <div data-sel-line aria-hidden="true" style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: #FF6A3D; transform-origin: 0 50%"></div>
@@ -319,6 +199,8 @@ input:focus-visible{outline-color:#111827}
 </div>
 </section>
 
+</main>
+
 <footer style="background: #111827; color: #D5DAE3">
 <div style="max-width: 1160px; margin: 0 auto; padding: 56px 24px; display: flex; flex-wrap: wrap; gap: 32px 64px; justify-content: space-between; font-size: 16px">
 <div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
@@ -342,13 +224,5 @@ input:focus-visible{outline-color:#111827}
 </footer>
 
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7800}}'>
-class Component extends DCLogic {
-renderVals() {
-return {};
-}
-}
-</script>
 </body>
 </html>

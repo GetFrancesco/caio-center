@@ -1,0 +1,38 @@
+# Dipendenze
+node_modules/
+
+# Build (Vite)
+dist/
+dist-ssr/
+*.local
+.vite/
+
+# Test e coverage
+coverage/
+playwright-report/
+test-results/
+
+# Netlify
+.netlify/
+
+# Ambiente e segreti
+.env
+.env.*
+!.env.example
+
+# Log
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# Editor e sistema
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+
+# Strumenti locali
+.tokensave/
+.claude/settings.local.json

@@ -1,0 +1,78 @@
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-500.css";
+@import "@fontsource/inter/latin-600.css";
+@import "@fontsource/poppins/latin-500.css";
+@import "@fontsource/poppins/latin-600.css";
+@import "@fontsource/poppins/latin-700.css";
+
+body {
+  margin: 0;
+}
+
+a {
+  color: #111827;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: #b93a16;
+}
+
+:focus-visible {
+  outline: 2px solid #b93a16;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+header :focus-visible,
+footer :focus-visible,
+#strategia :focus-visible,
+#selezione :focus-visible {
+  outline-color: #ff6a3d;
+}
+
+#contatti :focus-visible,
+input:focus-visible {
+  outline-color: #111827;
+}
+
+/* !important serve finché i colori dei bottoni sono negli style inline delle pagine. */
+/* biome-ignore-start lint/complexity/noImportantStyles: override degli style inline */
+.btn-accent:hover {
+  background: #ff7f57 !important;
+  color: #111827 !important;
+}
+
+.btn-navy:hover {
+  background: #263042 !important;
+  color: #ffffff !important;
+}
+
+.btn-outline:hover {
+  background: #111827 !important;
+  color: #ffffff !important;
+}
+
+/* biome-ignore-end lint/complexity/noImportantStyles: override degli style inline */
+
+.nav-link:hover {
+  opacity: 0.72;
+}
+
+.text-link {
+  display: inline-block;
+}
+
+.brand-dot {
+  color: #ff6a3d;
+}
+
+#contatti .brand-dot {
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nav-link {
+    transition: opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
