@@ -1,3 +1,13 @@
+# Moduli nell'HTML pubblicato: "contatti" e "newsletter" (data-netlify="true").
+# Il destinatario delle notifiche non si dichiara qui. Dopo il deploy, nel sito Netlify:
+# Forms → Submission notifications → Add notification → Email notification.
+# Indirizzo: info@indoostry.com, per tutti i moduli.
+# Se l'indirizzo non è di un membro del team, Netlify manda una mail di conferma:
+# le notifiche partono solo dopo il clic su Confirm. Fino ad allora le richieste
+# restano in Forms → submissions.
+# Il campo email del modulo imposta Reply-to, così si può rispondere a chi ha scritto.
+# Oggetto impostato nell'HTML (name="subject"), che ha priorità su quello del pannello.
+
 [build]
   command = "npm run build"
   publish = "dist"

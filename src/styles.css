@@ -75,6 +75,18 @@ a {
   color: var(--c-accent-dark);
 }
 
+.on-dark .lead a {
+  color: var(--c-white);
+}
+
+.on-accent a:not(.btn):hover {
+  color: var(--c-ink);
+}
+
+.on-dark .lead a:hover {
+  color: var(--c-accent);
+}
+
 :focus-visible {
   outline: 2px solid var(--c-accent-dark);
   outline-offset: 3px;
@@ -174,6 +186,10 @@ input:focus-visible {
   text-underline-offset: 0.35em;
 }
 
+.nav .btn[aria-current="page"] {
+  box-shadow: inset 0 -3px 0 var(--c-ink);
+}
+
 .nav-link:hover {
   opacity: 0.72;
 }
@@ -199,7 +215,7 @@ input:focus-visible {
 }
 
 .footer-link {
-  padding-block: 8px;
+  padding-block: 12px;
   color: var(--c-white);
 }
 
@@ -571,12 +587,49 @@ input:focus-visible {
 
 /* Newsletter */
 .input {
+  box-sizing: border-box;
   padding: 16px;
   border: 1px solid var(--c-subtle);
   border-radius: var(--radius-s);
   font: inherit;
   color: var(--c-ink);
   background: var(--c-white);
+}
+
+.stack > .input {
+  width: 100%;
+}
+
+textarea.input {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.input[aria-invalid="true"] {
+  border-color: var(--c-accent-dark);
+}
+
+.form-error {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+form {
+  position: relative;
+}
+
+.form-error:empty {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+address {
+  font-style: normal;
 }
 
 .submit {

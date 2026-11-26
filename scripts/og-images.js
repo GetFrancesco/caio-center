@@ -1,5 +1,6 @@
 // Genera le immagini di condivisione 1200x630 in public/og/ con Chrome headless.
-// Uso: npm run og   (variabile CHROME per un percorso diverso del browser)
+// Uso: npm run og
+// CHROME: percorso del browser. OG_ONLY=contatti.png,cookie.png per generarne solo alcune.
 import { execFileSync } from 'node:child_process';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -15,6 +16,9 @@ const cards = [
   { file: 'home.png', eyebrow: 'Per le aziende', title: 'Il Chief AI Officer per la tua impresa' },
   { file: 'diventa-caio.png', eyebrow: 'Diventa CAIO', title: 'Diventa Chief AI Officer nella rete caio.center' },
   { file: 'selezione.png', eyebrow: 'Per i selezionatori', title: 'Valutiamo i candidati Chief AI Officer con voi' },
+  { file: 'contatti.png', eyebrow: 'Contatti', title: 'Scrivi a caio.center' },
+  { file: 'protezione-dei-dati.png', eyebrow: 'Protezione dei dati', title: 'Come trattiamo i dati personali' },
+  { file: 'cookie.png', eyebrow: 'Cookie', title: 'Questo sito non usa cookie' },
 ];
 
 const html = ({ eyebrow, title }) => `<!doctype html><html lang="it"><head><meta charset="utf-8"><style>
@@ -34,17 +38,23 @@ h1{font-family:Poppins;font-weight:600;font-size:72px;line-height:1.08;letter-sp
 <div class="foot">Europa e Svizzera</div>
 </body></html>`;
 
+const only = process.env.OG_ONLY?.split(',').filter(Boolean);
+const selected = only?.length ? cards.filter((card) => only.includes(card.file)) : cards;
+
 const tmp = mkdtempSync(join(tmpdir(), 'og-'));
 try {
-  for (const card of cards) {
+  for (const card of selected) {
     const page = join(tmp, `${card.file}.html`);
     writeFileSync(page, html(card));
     execFileSync(CHROME, [
       '--headless=new',
       '--disable-gpu',
+      '--no-sandbox',
+      '--disable-dev-shm-usage',
       '--hide-scrollbars',
       '--force-device-scale-factor=1',
       '--window-size=1200,630',
+      `--user-data-dir=${join(tmp, 'profile')}`,
       `--screenshot=${join(root, 'public/og', card.file)}`,
       pathToFileURL(page).href,
     ]);

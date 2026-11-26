@@ -89,14 +89,8 @@ function heroEntrance() {
 function sectionReveal() {
   for (const sec of document.querySelectorAll('section')) {
     if (sec.id === 'selezione') continue;
-    if (sec.id === 'contatti') {
-      const block = sec.querySelector('[data-contatti-block]');
-      if (block) {
-        hide([block], 16);
-        inView(block, () => reveal([block], 0), { amount: 0.05 });
-      }
-      continue;
-    }
+    // Il modulo resta visibile subito, anche quando si arriva da un link #contatti.
+    if (sec.id === 'contatti') continue;
     const first = sec.firstElementChild;
     const container =
       sec.children.length === 1 && first.tagName === 'DIV' && getComputedStyle(first).maxWidth !== 'none' ? first : sec;
