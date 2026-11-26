@@ -5,6 +5,11 @@ Sito statico di caio.center, costruito con Vite e pubblicato su Netlify.
 - `/` home per le aziende
 - `/diventa-caio/` percorso per futuri CAIO
 - `/selezione/` per le società di selezione
+- `/contatti/` modulo e indirizzo email
+- `/protezione-dei-dati/` informativa privacy
+- `/cookie/` informativa cookie
+
+I moduli `contatti` e `newsletter` sono Netlify Forms. L'invio finisce nel pannello del sito. La notifica a `info@indoostry.com` si attiva a mano: Forms → Submission notifications → Email notification. Se l'indirizzo non appartiene a un membro del team, Netlify chiede una conferma prima di inoltrare le mail. Il campo `email` del modulo imposta il Reply-to.
 
 ## Sviluppo
 
@@ -26,7 +31,7 @@ npm run dev
 
 ## Struttura
 
-- `index.html`, `diventa-caio/index.html`, `selezione/index.html`: le pagine, registrate in `vite.config.js`.
+- `index.html`, `diventa-caio/index.html`, `selezione/index.html`, `contatti/index.html`, `protezione-dei-dati/index.html`, `cookie/index.html`: le pagine, registrate in `vite.config.js`. `grazie/index.html` è la conferma di invio (`noindex`, fuori dalla sitemap).
 - `src/styles.css`: tutti gli stili (token, componenti, utility).
 - `src/partials/site.js`: header e footer condivisi, inseriti da `<!-- partial:nome -->`.
 - `src/motion.js`: animazioni (Motion).

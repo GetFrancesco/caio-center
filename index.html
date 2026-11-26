@@ -38,6 +38,14 @@
         "Europa",
         "Svizzera"
       ],
+      "email": "info@indoostry.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "info@indoostry.com",
+        "contactType": "customer support",
+        "availableLanguage": "it",
+        "url": "https://caio.center/contatti/"
+      },
       "parentOrganization": {
         "@type": "Organization",
         "name": "Indoostry Group SA",
@@ -109,10 +117,10 @@
 </div>
 </div>
 
-<div class="col basis-360 card bg-white c-ink p-32 gap-16" id="test">
+<div class="col basis-360 card bg-white c-ink p-32 gap-16">
 <p class="eyebrow">Test gratuito</p>
 <h2 class="fs-24 lh-120">L'AI nella tua azienda: a che punto sei?</h2>
-<p class="c-muted">15 domande su cinque aree. Alla fine ricevi il tuo profilo e cosa fare adesso.</p>
+<p class="c-muted">15 domande su cinque aree. Ti mandiamo il test e la valutazione: sul sito non c'è un questionario da compilare.</p>
 <div class="row gap-8">
 <span class="chip">Uso</span>
 <span class="chip">Dati</span>
@@ -120,7 +128,7 @@
 <span class="chip">Persone</span>
 <span class="chip">Risultati</span>
 </div>
-<a class="btn btn-navy text-center" href="#test">Inizia il test</a>
+<a class="btn btn-navy text-center" href="#contatti">Scrivici per ricevere il test e la valutazione gratuita</a>
 </div>
 </div>
 </header>
@@ -269,7 +277,7 @@
 <div class="card col basis-200 card bg-surface gap-16">
 <p class="step-num">1</p>
 <h3 class="fs-24 lh-125">Diagnosi</h3>
-<p class="c-muted fill">Il test gratuito, poi un check-up con un nostro specialista per leggere insieme il risultato e fotografare strumenti, dati e rischi.</p>
+<p class="c-muted fill">Ti mandiamo il test gratuito, poi un check-up con un nostro specialista per leggere insieme il risultato e fotografare strumenti, dati e rischi. <a href="#contatti">Scrivici per riceverlo</a>.</p>
 </div>
 <div class="card col basis-200 card bg-surface gap-16">
 <p class="step-num">2</p>
@@ -463,13 +471,19 @@
 <h2 class="title-sub">Ogni settimana rispondiamo a una domanda vera, in pochi minuti e con parole che capiscono tutti.</h2>
 <p class="c-muted">Un video e una lettera per imprenditori e direttori generali: una risposta in una frase, il perché, e cosa fare lunedì mattina.</p>
 </div>
-<form class="col basis-380 stack gap-12">
-<label class="font-display fw-500" for="email">La tua e-mail di lavoro</label>
+<form class="col basis-380 stack gap-12" name="newsletter" method="POST" action="/grazie/" data-netlify="true" netlify-honeypot="bot-field">
+<input type="hidden" name="form-name" value="newsletter">
+<input type="hidden" name="subject" value="caio.center: iscrizione alla lettera">
+<p hidden>
+<label>Non compilare questo campo <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+</p>
+<label class="font-display fw-500" for="newsletter-email">La tua e-mail di lavoro</label>
+<p class="form-error" id="newsletter-error" data-form-error aria-live="assertive"></p>
 <div class="row gap-12">
-<input class="col basis-220 input" id="email" type="email" placeholder="nome@azienda.it">
-<button type="button" class="btn btn-navy submit">Iscrivimi</button>
+<input class="col basis-220 input" id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="nome@azienda.it" required>
+<button type="submit" class="btn btn-navy submit">Iscrivimi</button>
 </div>
-<p class="c-muted fs-14">Una mail a settimana. Ti cancelli con un clic.</p>
+<p class="c-muted fs-14">Una mail a settimana. Per non riceverla più, scrivi a <a href="mailto:info@indoostry.com">info@indoostry.com</a>.</p>
 </form>
 </section>
 
@@ -492,14 +506,13 @@
 
 <section class="on-accent" id="contatti">
 <div class="container cta-inner">
-<div class="row gap-40 gap-x-64 items-center justify-between" data-contatti-block>
+<div class="row gap-40 gap-x-64 justify-between" data-contatti-block>
 <div class="col grow basis-520 stack">
 <h2 class="title-cta">Parliamo della tua azienda.</h2>
-<p class="cta-text">Raccontaci a che punto sei con l'intelligenza artificiale: partiamo da lì.</p>
-<!-- DA COMPLETARE: inserire qui l'indirizzo e-mail o il modulo di contatto (non presente nel sito originale) -->
+<p class="cta-text">Scrivici per ricevere il test e la valutazione gratuita. Ti rispondiamo all'indirizzo che lasci.</p>
 <p class="cta-note">caio<span class="brand-dot">.</span>center è un servizio di Indoostry Group SA, Lugano.</p>
 </div>
-<div class="cta-action"><a class="btn btn-navy btn-lg nowrap" href="#test">Oppure fai il test gratuito</a></div>
+<!-- partial:form -->
 </div>
 </div>
 </section>

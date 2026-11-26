@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import axe from 'axe-core';
 import { JSDOM } from 'jsdom';
 import { describe, expect, it } from 'vitest';
-import { pagePath, renderPartials } from '../src/partials/site.js';
+import { NAV, pagePath, renderPartials } from '../src/partials/site.js';
 import { pages } from '../vite.config.js';
 
 const SITE = 'https://caio.center';
@@ -69,8 +69,25 @@ describe.each(Object.values(pages))('%s', (file) => {
     expect(source).not.toMatch(/\sstyle="/);
     expect(doc.querySelectorAll('.topbar')).toHaveLength(1);
     expect(doc.querySelectorAll('footer')).toHaveLength(1);
+    const path = pagePath(file);
+    const inMenu = NAV.some((item) => item.href === path) || path === '/contatti/';
     const current = [...doc.querySelectorAll('[aria-current="page"]')].map((a) => a.getAttribute('href'));
-    expect(current).toEqual([pagePath(file)]);
+    expect(current).toEqual(inMenu ? [path] : []);
+  });
+
+  it('non rimanda a LinkedIn, YouTube o a un test online', () => {
+    const html = render(file);
+    expect(html).not.toMatch(/linkedin|youtube/i);
+    expect(html).not.toMatch(/href="#test"/);
+    expect(html).not.toMatch(/Inizia il test/);
+  });
+
+  it('collega contatti, privacy, cookie e la mail', () => {
+    const html = render(file);
+    expect(html).toContain('href="/contatti/"');
+    expect(html).toContain('href="/protezione-dei-dati/"');
+    expect(html).toContain('href="/cookie/"');
+    expect(html).toContain('href="mailto:info@indoostry.com"');
   });
 
   it('non ha violazioni axe', async () => {
@@ -80,5 +97,41 @@ describe.each(Object.values(pages))('%s', (file) => {
     const result = await window.axe.run(window.document, { rules: { 'color-contrast': { enabled: false } } });
     const violations = result.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target).join(', ')}`);
     expect(violations).toEqual([]);
+  });
+});
+
+describe('moduli', () => {
+  const home = render('index.html');
+
+  it('il test della home porta al modulo contatti', () => {
+    expect(home).toContain('href="#contatti"');
+    expect(home).toContain('Scrivici per ricevere il test e la valutazione gratuita');
+    expect(home).toContain('name="contatti"');
+    expect(home).toContain('value="Test e valutazione gratuita"');
+    expect(home).toContain('data-netlify="true"');
+    expect(home).toContain('action="/grazie/"');
+    expect(home).toContain('name="newsletter"');
+    expect(home).not.toContain('type="button"');
+  });
+
+  it.each(['diventa-caio/index.html', 'selezione/index.html', 'contatti/index.html'])(
+    '%s invia il modulo contatti a Netlify',
+    (file) => {
+      const html = render(file);
+      expect(html).toContain('name="contatti"');
+      expect(html).toContain('data-netlify="true"');
+      expect(html).toContain('name="email"');
+      expect(html).toContain('action="/grazie/"');
+    },
+  );
+});
+
+describe('grazie', () => {
+  const html = readFileSync(resolve(root, 'grazie/index.html'), 'utf8');
+
+  it('conferma l’invio e non entra nella sitemap', () => {
+    expect(html).toContain('noindex');
+    expect(html).toContain('Messaggio inviato');
+    expect(sitemap).not.toContain('/grazie/');
   });
 });

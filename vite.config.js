@@ -7,6 +7,9 @@ export const pages = {
   home: 'index.html',
   diventaCaio: 'diventa-caio/index.html',
   selezione: 'selezione/index.html',
+  contatti: 'contatti/index.html',
+  privacy: 'protezione-dei-dati/index.html',
+  cookie: 'cookie/index.html',
 };
 
 /** Inserisce header e footer condivisi (src/partials) in ogni pagina. */
@@ -24,9 +27,10 @@ export default defineConfig({
   plugins: [partials()],
   build: {
     rollupOptions: {
-      input: Object.fromEntries(
-        Object.entries(pages).map(([name, file]) => [name, resolve(import.meta.dirname, file)]),
-      ),
+      input: {
+        ...Object.fromEntries(Object.entries(pages).map(([name, file]) => [name, resolve(import.meta.dirname, file)])),
+        grazie: resolve(import.meta.dirname, 'grazie/index.html'),
+      },
     },
   },
   test: {

@@ -14,7 +14,8 @@ Sito marketing di caio.center, in italiano, pubblicato su Netlify. Tre pagine:
 - Meta, Open Graph, Twitter Card e JSON-LD sono scritti a mano nell'head di ogni pagina; `tests/pages.test.js` li verifica.
 - Header (barra con logo e menu) e footer sono partial in `src/partials/site.js`: le pagine li richiamano con `<!-- partial:header -->` e `<!-- partial:footer -->` e il plugin in `vite.config.js` li inserisce in dev e in build.
 - Tutti gli stili stanno in `src/styles.css`: token in `:root`, poi base, layout, componenti e in fondo poche utility (`row`, `stack`, `col basis-*`, `gap-*`, `fs-*`, `c-*`). Le pagine non usano `style` inline (lo verifica un test).
-- Nel blocco contatti della home manca ancora l'indirizzo e-mail o il modulo (vedi il commento `DA COMPLETARE`); i link a LinkedIn, YouTube e protezione dei dati nel footer puntano a `#top`.
+- Contatti, test gratuito e lettera settimanale passano dai moduli Netlify `contatti` e `newsletter` e da `info@indoostry.com`. Le notifiche email si attivano nel pannello Netlify (commento in `netlify.toml`): il destinatario non si può dichiarare nel file di build.
+- Footer: Protezione dei dati (`/protezione-dei-dati/`) e informativa cookie (`/cookie/`). Il sito non imposta cookie di tracciamento e non ha un banner.
 
 Ogni modifica deve avvicinare il sito alle regole qui sotto, senza riscritture non richieste.
 
